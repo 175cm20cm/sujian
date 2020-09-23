@@ -34,7 +34,7 @@
 		<!-- 导入 lolshop 公共模块 -->
 		<dependency>
 			<groupId>com.yc</groupId>
-			<artifactId>C76-S3-lolshop-common</artifactId>
+			<artifactId>C78-S3-sujian-common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<!-- thymeleaf 启动器依赖 -->

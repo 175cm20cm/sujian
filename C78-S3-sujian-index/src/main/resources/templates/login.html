@@ -5,65 +5,91 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" />
 <meta name="robots" content="none" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" />
+<meta name="viewport"
+	content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" />
 <meta name="generator" content="Z-BlogPHP 1.5.1 Zero" />
 <meta name="renderer" content="webkit" />
-<title>会员登录 - 明哥博客</title>
-<link rel="stylesheet" type="text/css" href="css/style.css" />
+<title>会员登录</title>
+<link rel="stylesheet" type="text/css" href="css/login.css" />
 <style>
-    body{background: url(img/th.jpg) no-repeat center;background-size: cover;}
-.loginbg{background-image: url(img/th.jpg)}
-@media (max-width: 500px){
-body {background: #fff;}
-.login{box-shadow: initial;}
-.head {background: url('img/th.jpg') no-repeat center;background-size: cover;}}
-.bing{display:none}
+body {
+	background: url(img/th.jpg) no-repeat center;
+	background-size: cover;
+}
 
+.loginbg {
+	background-image: url(img/th.jpg)
+}
+
+@media ( max-width : 500px) {
+	body {
+		background: #fff;
+	}
+	.login {
+		box-shadow: initial;
+	}
+	.head {
+		background: url('img/th.jpg') no-repeat center;
+		background-size: cover;
+	}
+}
+
+.bing {
+	display: none
+}
 </style>
 </head>
 <script type="text/javascript" src="js/jquery.min.js"></script>
 
 <script>
-$(function() {
-    $("body").keydown(function() {
-        if (event.keyCode == "13") {
-            $('.submit').click();
-        }
-    });
-    var loginh = $('.login').outerHeight() / 2 + 20;
-    var loginw = $('.login').outerWidth() / 2;
-    $('.login').css('margin-top','-'+loginh+'px');
-    $('.login').css('margin-left','-'+loginw+'px');
-});
-
+	$(function() {
+		$("body").keydown(function() {
+			if (event.keyCode == "13") {
+				$('.submit').click();
+			}
+		});
+		var loginh = $('.login').outerHeight() / 2 + 20;
+		var loginw = $('.login').outerWidth() / 2;
+		$('.login').css('margin-top', '-' + loginh + 'px');
+		$('.login').css('margin-left', '-' + loginw + 'px');
+	});
 </script>
 <body>
-<div class="login">
-<div class="loginbg"></div>
-<div class="head">
-<span class="name">淇云博客</span>
-<span class="title">会员登录</span>
-</div>
-<div class="loginbox">
-<input type="text" id="edtUserName" name="edtUserName" class="text" placeholder="账号">
-<hr class="hr15">
-<input type="password" id="edtPassWord" name="edtPassWord" class="text" placeholder="密码">
-<hr class="hr15">
-<input required="required" type="text" name="verifycode" style="width:65%" placeholder="验证码"><span class="fr" style="line-height: 45px;"><img id="reg_verfiycode" style="border:none;vertical-align:middle;width:90px;height:30px;cursor:pointer;" src="https://www.pengqi.club/zb_system/script/c_validcode.php?id=User" alt="" title="" onClick="javascript:this.src='https://www.pengqi.club/zb_system/script/c_validcode.php?id=User&amp;tm='+Math.random();" /></span> <hr class="hr15">
-<span class="fl"><label for="chkRemember"><input type="checkbox" id="chkRemember" name="chkRemember"> 保持登录</label></span>
-<span class="fr"><a href="forget.html">忘记密码？</a> <a href="register.html">注册账号</a></span>
-<hr class="hr15">
-<input type="submit" id="loginbtnPost" name="loginbtnPost" class="submit" onClick="return Ytuser_Login()" value="登录">
-<hr class="hr15">
-<div class="other">
-<div class="hr">社交账号登陆</div>
-<hr class="hr15">
-<a href="#" class="">
-	<img src="img/qqloginbtn.png">
-	</a>
-</div>
-</div>
-<div class="back"><a href="#/">返回首页</a></div>
-</div>
+	<div class="login">
+		<div class="loginbg"></div>
+		<div class="head">
+			<span class="title">会员登录</span>
+		</div>
+		<div class="loginbox">
+			<form action="login" method="post">
+				<input type="text" id="username" name="username" class="text"
+					placeholder="账号">
+				<hr class="hr15">
+				<input type="password" id="password" name="password" class="text"
+					placeholder="密码">
+				<hr class="hr15">
+				<input required="required" type="text" name="verifycode"
+					style="width: 65%" placeholder="验证码"><span class="fr"
+					style="line-height: 45px;"><img id="reg_verfiycode"
+					style="border: none; vertical-align: middle; width: 90px; height: 30px; cursor: pointer;"
+					src="https://www.pengqi.club/zb_system/script/c_validcode.php?id=User"
+					alt="" title=""
+					onClick="javascript:this.src='https://www.pengqi.club/zb_system/script/c_validcode.php?id=User&amp;tm='+Math.random();" /></span>
+				<hr class="hr15">
+				<span class="fl"><label for="chkRemember"><input
+						type="checkbox" id="chkRemember" name="chkRemember"> 保持登录</label></span>
+				<span class="fr"><a href="forget.html">忘记密码？</a> <a
+					href="register.html">注册账号</a></span>
+				<hr class="hr15">
+				<input type="submit" id="loginbtnPost" name="loginbtnPost"
+					class="submit"  value="登录">
+			</form>
+
+			<div class="other"></div>
+		</div>
+		<div class="back">
+			<a href="index.html">返回首页</a>
+		</div>
+	</div>
 </body>
 </html>

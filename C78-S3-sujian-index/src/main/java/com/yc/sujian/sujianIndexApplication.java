@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
@@ -22,7 +21,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class sujianIndexApplication implements WebMvcConfigurer {
 	public static void main(String[] args) {
 		SpringApplication.run(sujianIndexApplication.class, args);
-	}
+  	}
 	
 	/**
 	 * SpringBoot定义拦截器
