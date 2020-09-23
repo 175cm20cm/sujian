@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yc.sujian.dao.DbCommentMapper">
-  <resultMap id="BaseResultMap" type="com.yc.sujian.bean.DbComment">
+<mapper namespace="com.yc.sujian.dao.CommentsMapper">
+  <resultMap id="BaseResultMap" type="com.yc.sujian.bean.Comments">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="a_id" jdbcType="INTEGER" property="aId" />
-    <result column="a_createtime" jdbcType="TIMESTAMP" property="aCreatetime" />
-    <result column="c_contents" jdbcType="VARCHAR" property="cContents" />
+    <result column="aid" jdbcType="INTEGER" property="aid" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="contents" jdbcType="VARCHAR" property="contents" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -66,15 +66,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, a_id, a_createtime, c_contents
+    id, aid, createtime, contents
   </sql>
-  <select id="selectByExample" parameterType="com.yc.sujian.bean.DbCommentExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.yc.sujian.bean.CommentsExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from db_comment
+    from comments
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -85,76 +85,76 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from db_comment
+    from comments
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from db_comment
+    delete from comments
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yc.sujian.bean.DbCommentExample">
-    delete from db_comment
+  <delete id="deleteByExample" parameterType="com.yc.sujian.bean.CommentsExample">
+    delete from comments
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yc.sujian.bean.DbComment">
+  <insert id="insert" parameterType="com.yc.sujian.bean.Comments">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into db_comment (a_id, a_createtime, c_contents
+    insert into comments (aid, createtime, contents
       )
-    values (#{aId,jdbcType=INTEGER}, #{aCreatetime,jdbcType=TIMESTAMP}, #{cContents,jdbcType=VARCHAR}
+    values (#{aid,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{contents,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yc.sujian.bean.DbComment">
+  <insert id="insertSelective" parameterType="com.yc.sujian.bean.Comments">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into db_comment
+    insert into comments
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="aId != null">
-        a_id,
+      <if test="aid != null">
+        aid,
       </if>
-      <if test="aCreatetime != null">
-        a_createtime,
+      <if test="createtime != null">
+        createtime,
       </if>
-      <if test="cContents != null">
-        c_contents,
+      <if test="contents != null">
+        contents,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="aId != null">
-        #{aId,jdbcType=INTEGER},
+      <if test="aid != null">
+        #{aid,jdbcType=INTEGER},
       </if>
-      <if test="aCreatetime != null">
-        #{aCreatetime,jdbcType=TIMESTAMP},
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="cContents != null">
-        #{cContents,jdbcType=VARCHAR},
+      <if test="contents != null">
+        #{contents,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yc.sujian.bean.DbCommentExample" resultType="java.lang.Long">
-    select count(*) from db_comment
+  <select id="countByExample" parameterType="com.yc.sujian.bean.CommentsExample" resultType="java.lang.Long">
+    select count(*) from comments
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update db_comment
+    update comments
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.aId != null">
-        a_id = #{record.aId,jdbcType=INTEGER},
+      <if test="record.aid != null">
+        aid = #{record.aid,jdbcType=INTEGER},
       </if>
-      <if test="record.aCreatetime != null">
-        a_createtime = #{record.aCreatetime,jdbcType=TIMESTAMP},
+      <if test="record.createtime != null">
+        createtime = #{record.createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.cContents != null">
-        c_contents = #{record.cContents,jdbcType=VARCHAR},
+      <if test="record.contents != null">
+        contents = #{record.contents,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -162,35 +162,35 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update db_comment
+    update comments
     set id = #{record.id,jdbcType=INTEGER},
-      a_id = #{record.aId,jdbcType=INTEGER},
-      a_createtime = #{record.aCreatetime,jdbcType=TIMESTAMP},
-      c_contents = #{record.cContents,jdbcType=VARCHAR}
+      aid = #{record.aid,jdbcType=INTEGER},
+      createtime = #{record.createtime,jdbcType=TIMESTAMP},
+      contents = #{record.contents,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yc.sujian.bean.DbComment">
-    update db_comment
+  <update id="updateByPrimaryKeySelective" parameterType="com.yc.sujian.bean.Comments">
+    update comments
     <set>
-      <if test="aId != null">
-        a_id = #{aId,jdbcType=INTEGER},
+      <if test="aid != null">
+        aid = #{aid,jdbcType=INTEGER},
       </if>
-      <if test="aCreatetime != null">
-        a_createtime = #{aCreatetime,jdbcType=TIMESTAMP},
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="cContents != null">
-        c_contents = #{cContents,jdbcType=VARCHAR},
+      <if test="contents != null">
+        contents = #{contents,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yc.sujian.bean.DbComment">
-    update db_comment
-    set a_id = #{aId,jdbcType=INTEGER},
-      a_createtime = #{aCreatetime,jdbcType=TIMESTAMP},
-      c_contents = #{cContents,jdbcType=VARCHAR}
+  <update id="updateByPrimaryKey" parameterType="com.yc.sujian.bean.Comments">
+    update comments
+    set aid = #{aid,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      contents = #{contents,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

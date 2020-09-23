@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- Header 头部 -->
+	<div th:fragment="header">
+		<!--GJ-UI组件模块html代码开始-->
+		<nav class="gj-nav1 gcl-yh">
+			<!--响应式导航栏-->
+			<div class="gnav gclear">
+				<div class="gj-logo gj-left">
+					<a href="" title="sujian"
+						style="color: #fff; font-size: 30px; letter-spacing: 2px; margin: 4px 0;">sujian</a>
+				</div>
+				<i class="gbar fa fa-bars" aria-hidden="true"></i>
+				<ul class="gnav-ul gj-right">
+
+					<li th:if="${session.loginedUser} == null"><a
+						href="tologin">登录</a></li>
+					<li th:if="${session.loginedUser} != null"><a> <span
+							th:text="${session.loginedUser.username}"></span>
+					</a></li>
+					<li class="gxz"><a href="index.html"><i class="fa fa-home"
+							aria-hidden="true"></i> 首页</a></li>
+					<li><a href="index1.html">知识干货</a></li>
+					<li><a href="index2.html">我的作品</a></li>
+					<li><a href="index3.html">谈天说地</a></li>
+					<li><a href="index4.html">心情说说</a></li>
+					<li th:if="${session.loginedUser} != null"><a
+						href="out">退出</a></li>
+
+				</ul>
+			</div>
+		</nav>
+
+	</div>
+
+	<!--footer底部-->
+	<div class="container footer">
+		<div class="gj-footer">
+			<p>
+				Copyright © 2018. sujian | Powered by <a href="javascript:;"
+					target="_blank">YzmCMS</a>
+			</p>
+			<p>备案：湘ICP备16017252号-1 博客基于GJ-UI组件、YzmCMS内容管理系统</p>
+		</div>
+	</div>
+
+
+</body>
+</html>

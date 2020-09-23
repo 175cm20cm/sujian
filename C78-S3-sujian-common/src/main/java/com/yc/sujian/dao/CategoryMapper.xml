@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yc.sujian.dao.DbCategoryMapper">
-  <resultMap id="BaseResultMap" type="com.yc.sujian.bean.DbCategory">
+<mapper namespace="com.yc.sujian.dao.CategoryMapper">
+  <resultMap id="BaseResultMap" type="com.yc.sujian.bean.Category">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="c_name" jdbcType="VARCHAR" property="cName" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -64,15 +64,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, c_name
+    id, name
   </sql>
-  <select id="selectByExample" parameterType="com.yc.sujian.bean.DbCategoryExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.yc.sujian.bean.CategoryExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from db_category
+    from category
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -83,56 +83,56 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from db_category
+    from category
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from db_category
+    delete from category
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yc.sujian.bean.DbCategoryExample">
-    delete from db_category
+  <delete id="deleteByExample" parameterType="com.yc.sujian.bean.CategoryExample">
+    delete from category
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yc.sujian.bean.DbCategory">
+  <insert id="insert" parameterType="com.yc.sujian.bean.Category">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into db_category (c_name)
-    values (#{cName,jdbcType=VARCHAR})
+    insert into category (name)
+    values (#{name,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yc.sujian.bean.DbCategory">
+  <insert id="insertSelective" parameterType="com.yc.sujian.bean.Category">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into db_category
+    insert into category
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="cName != null">
-        c_name,
+      <if test="name != null">
+        name,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="cName != null">
-        #{cName,jdbcType=VARCHAR},
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yc.sujian.bean.DbCategoryExample" resultType="java.lang.Long">
-    select count(*) from db_category
+  <select id="countByExample" parameterType="com.yc.sujian.bean.CategoryExample" resultType="java.lang.Long">
+    select count(*) from category
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update db_category
+    update category
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.cName != null">
-        c_name = #{record.cName,jdbcType=VARCHAR},
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -140,25 +140,25 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update db_category
+    update category
     set id = #{record.id,jdbcType=INTEGER},
-      c_name = #{record.cName,jdbcType=VARCHAR}
+      name = #{record.name,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yc.sujian.bean.DbCategory">
-    update db_category
+  <update id="updateByPrimaryKeySelective" parameterType="com.yc.sujian.bean.Category">
+    update category
     <set>
-      <if test="cName != null">
-        c_name = #{cName,jdbcType=VARCHAR},
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yc.sujian.bean.DbCategory">
-    update db_category
-    set c_name = #{cName,jdbcType=VARCHAR}
+  <update id="updateByPrimaryKey" parameterType="com.yc.sujian.bean.Category">
+    update category
+    set name = #{name,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

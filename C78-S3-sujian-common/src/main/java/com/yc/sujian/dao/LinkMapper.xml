@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yc.sujian.dao.DbLinkMapper">
-  <resultMap id="BaseResultMap" type="com.yc.sujian.bean.DbLink">
+<mapper namespace="com.yc.sujian.dao.LinkMapper">
+  <resultMap id="BaseResultMap" type="com.yc.sujian.bean.Link">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="l_name" jdbcType="VARCHAR" property="lName" />
-    <result column="l_url" jdbcType="VARCHAR" property="lUrl" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,15 +65,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, l_name, l_url
+    id, name, url
   </sql>
-  <select id="selectByExample" parameterType="com.yc.sujian.bean.DbLinkExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.yc.sujian.bean.LinkExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from db_link
+    from link
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -84,65 +84,65 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from db_link
+    from link
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from db_link
+    delete from link
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yc.sujian.bean.DbLinkExample">
-    delete from db_link
+  <delete id="deleteByExample" parameterType="com.yc.sujian.bean.LinkExample">
+    delete from link
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yc.sujian.bean.DbLink">
+  <insert id="insert" parameterType="com.yc.sujian.bean.Link">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into db_link (l_name, l_url)
-    values (#{lName,jdbcType=VARCHAR}, #{lUrl,jdbcType=VARCHAR})
+    insert into link (name, url)
+    values (#{name,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yc.sujian.bean.DbLink">
+  <insert id="insertSelective" parameterType="com.yc.sujian.bean.Link">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into db_link
+    insert into link
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="lName != null">
-        l_name,
+      <if test="name != null">
+        name,
       </if>
-      <if test="lUrl != null">
-        l_url,
+      <if test="url != null">
+        url,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="lName != null">
-        #{lName,jdbcType=VARCHAR},
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
       </if>
-      <if test="lUrl != null">
-        #{lUrl,jdbcType=VARCHAR},
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yc.sujian.bean.DbLinkExample" resultType="java.lang.Long">
-    select count(*) from db_link
+  <select id="countByExample" parameterType="com.yc.sujian.bean.LinkExample" resultType="java.lang.Long">
+    select count(*) from link
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update db_link
+    update link
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.lName != null">
-        l_name = #{record.lName,jdbcType=VARCHAR},
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.lUrl != null">
-        l_url = #{record.lUrl,jdbcType=VARCHAR},
+      <if test="record.url != null">
+        url = #{record.url,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -150,30 +150,30 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update db_link
+    update link
     set id = #{record.id,jdbcType=INTEGER},
-      l_name = #{record.lName,jdbcType=VARCHAR},
-      l_url = #{record.lUrl,jdbcType=VARCHAR}
+      name = #{record.name,jdbcType=VARCHAR},
+      url = #{record.url,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yc.sujian.bean.DbLink">
-    update db_link
+  <update id="updateByPrimaryKeySelective" parameterType="com.yc.sujian.bean.Link">
+    update link
     <set>
-      <if test="lName != null">
-        l_name = #{lName,jdbcType=VARCHAR},
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="lUrl != null">
-        l_url = #{lUrl,jdbcType=VARCHAR},
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yc.sujian.bean.DbLink">
-    update db_link
-    set l_name = #{lName,jdbcType=VARCHAR},
-      l_url = #{lUrl,jdbcType=VARCHAR}
+  <update id="updateByPrimaryKey" parameterType="com.yc.sujian.bean.Link">
+    update link
+    set name = #{name,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
