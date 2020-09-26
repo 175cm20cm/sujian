@@ -23,6 +23,8 @@ public class UserBiz {
 		UserExample ue = new UserExample();
 		ue.createCriteria().andUsernameEqualTo(user.getUsername()).andPasswordEqualTo(user.getPassword());
 		List<User> list = um.selectByExample(ue);
+		
+		
 		if(list.size()!=1) {
 			throw new BizException("用户名或密码错误!");
 		}

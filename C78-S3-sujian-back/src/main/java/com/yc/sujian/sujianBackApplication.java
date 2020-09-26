@@ -8,7 +8,7 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 
 @SpringBootApplication
 //mybatis的接口组件扫描
-@MapperScan("com.yc.lolshop")
+@MapperScan("com.yc.sujian")
 //开启声明式远程服务调用
 @EnableFeignClients
 //Spring会话共享注解

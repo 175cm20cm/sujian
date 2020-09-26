@@ -21,14 +21,13 @@
 					<li th:if="${session.loginedUser} == null"><a
 						href="tologin">登录</a></li>
 					<li th:if="${session.loginedUser} != null"><a> <span
-							th:text="${session.loginedUser.username}"></span>
+							th:text="${session.loginedUser.name}"></span>
 					</a></li>
 					<li class="gxz"><a href="index.html"><i class="fa fa-home"
 							aria-hidden="true"></i> 首页</a></li>
-					<li><a href="index1.html">知识干货</a></li>
-					<li><a href="index2.html">我的作品</a></li>
-					<li><a href="index3.html">谈天说地</a></li>
-					<li><a href="index4.html">心情说说</a></li>
+					<li th:each="c:${clist}">
+						<a th:href="'index1.html?id='+${c.id}" th:text="${c.name}">美食</a>
+					</li>
 					<li th:if="${session.loginedUser} != null"><a
 						href="out">退出</a></li>
 

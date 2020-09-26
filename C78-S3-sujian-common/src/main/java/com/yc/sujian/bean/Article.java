@@ -9,17 +9,52 @@ public class Article {
 
     private String content;
 
-    private Integer comments;
+    private String label;
 
     private Date createtime;
 
-    private String label;
+    private Integer comments;
 
     private Integer agreecnt;
 
     private Integer cid;
 
-    public Integer getId() {
+    private Integer uid;
+
+    private String image;
+    
+    private User user;
+    
+    private Category category;
+    
+    
+
+    public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	
+
+	@Override
+	public String toString() {
+		return "Article [id=" + id + ", title=" + title + ", content=" + content + ", label=" + label + ", createtime="
+				+ createtime + ", comments=" + comments + ", agreecnt=" + agreecnt + ", cid=" + cid + ", uid=" + uid
+				+ ", image=" + image + ", user=" + user + ", category=" + category + "]";
+	}
+
+	public Integer getId() {
         return id;
     }
 
@@ -43,12 +78,12 @@ public class Article {
         this.content = content == null ? null : content.trim();
     }
 
-    public Integer getComments() {
-        return comments;
+    public String getLabel() {
+        return label;
     }
 
-    public void setComments(Integer comments) {
-        this.comments = comments;
+    public void setLabel(String label) {
+        this.label = label == null ? null : label.trim();
     }
 
     public Date getCreatetime() {
@@ -59,12 +94,12 @@ public class Article {
         this.createtime = createtime;
     }
 
-    public String getLabel() {
-        return label;
+    public Integer getComments() {
+        return comments;
     }
 
-    public void setLabel(String label) {
-        this.label = label == null ? null : label.trim();
+    public void setComments(Integer comments) {
+        this.comments = comments;
     }
 
     public Integer getAgreecnt() {
@@ -81,5 +116,21 @@ public class Article {
 
     public void setCid(Integer cid) {
         this.cid = cid;
+    }
+
+    public Integer getUid() {
+        return uid;
+    }
+
+    public void setUid(Integer uid) {
+        this.uid = uid;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image == null ? null : image.trim();
     }
 }
